@@ -32,6 +32,7 @@ def main(argv):
     # Optional Hostname instead of localhost
     elif opt in ("-h", "--hostname"):
       broker = arg
+      print ('Set Broker Hostname ' + broker)
     # Optional Port
     elif opt in ("-p", "--port"):
       port = arg
@@ -60,7 +61,12 @@ def main(argv):
     print(msg.payload.decode())
 
   client = mqtt.Client()
-  client.connect(broker, port, timelive)
+  try:
+    print ('Connect with ' + broker + ':' + port)
+    client.connect(broker, port, timelive)
+  # Wrong options
+  except:
+    print ('Error: Connection failed')
   client.on_connect = on_connect
   client.on_message = on_message
   client.loop_forever()
