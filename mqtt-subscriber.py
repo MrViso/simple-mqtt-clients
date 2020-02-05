@@ -35,7 +35,7 @@ def main(argv):
       print ('Set Broker Hostname ' + broker)
     # Optional Port
     elif opt in ("-p", "--port"):
-      port = arg
+      port = int(arg)
     # Client name
     elif opt in ("-n", "--name"):
       name = arg
@@ -62,7 +62,7 @@ def main(argv):
 
   client = mqtt.Client()
   try:
-    print ('Connect with ' + broker + ':' + port)
+    print ('Connect with ' + broker + ':' + str(port))
     client.connect(broker, port, timelive)
   # Wrong options
   except:
