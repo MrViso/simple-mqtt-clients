@@ -20,20 +20,20 @@ def main(argv):
     opts, args = getopt.getopt(argv, "h:p:n:t:", ["help", "hostname=", "port=", "name=", "topic="])
   # Wrong options
   except getopt.GetoptError:
-    print 'Error: publisher.py -h <hostname> -p <port>'
+    print ('Error: publisher.py -h <hostname> -p <port>')
     sys.exit(2)
   # Load Options and argument
   for opt, arg in opts:
     # Help Option
     if opt == '--help':
-      print 'Help: publisher.py -h <hostname> -p <port>'
+      print ('Help: publisher.py -h <hostname> -p <port>')
       sys.exit()
     # Optional Hostname instead of localhost
     elif opt in ("-h", "--hostname"):
       broker = arg
     # Optional Port
     elif opt in ("-p", "--port"):
-      port = arg
+      port = int(arg)
     # Client name
     elif opt in ("-n", "--name"):
       name = arg
